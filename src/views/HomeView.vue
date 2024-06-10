@@ -14,11 +14,7 @@
           <p class="text-3xl font-bold">Leonardo Cueto</p>
           <p class="text-xl font-semibold text-gray-700">Frontend Developer</p>
           <div class="flex gap-2">
-            <button
-              class="border-2 rounded-full border-black hover:bg-gray-100 hover:shadow-md px-5 py-3 text-xs font-semibold"
-            >
-              Descargar CV
-            </button>
+            <BtnDescargaCV />
             <IconContact />
           </div>
           <div class="flex gap-2 justify-center items-center">
@@ -28,7 +24,7 @@
               target="_blank"
               rel="nopener noreferrer"
             >
-              <IconLinkedIn />
+              <IconLinkedIn :height="40" :width="40" />
             </a>
             <a
               class="border-2 rounded-full border-black hover:bg-gray-300"
@@ -49,4 +45,5 @@
 import IconGitHub from "@/components/icons/IconGitHub.vue";
 import IconLinkedIn from "@/components/icons/IconLinkedIn.vue";
 import IconContact from "@/components/icons/IconContact.vue";
+import BtnDescargaCV from "@/components/BtnDescargaCV.vue";
 </script>

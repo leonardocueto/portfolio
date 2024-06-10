@@ -1,8 +1,8 @@
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="40"
-    height="40"
+    :width="width"
+    :height="height"
     viewBox="0 0 24 24"
   >
     <path
@@ -10,3 +10,10 @@
     />
   </svg>
 </template>
+<script lang="ts" setup>
+import { defineProps } from "vue";
+defineProps<{
+  width: number;
+  height: number;
+}>();
+</script>

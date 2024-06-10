@@ -4,7 +4,6 @@
     <div class="flex flex-col items-start gap-5 mt-10">
       <h2 class="text-4xl font-semibold">Skills</h2>
       <div
-        id="cards"
         class="flex flex-wrap justify-start items-start gap-5 overflow-auto max-h-[70vh]"
       >
         <AppCardExperience
@@ -16,7 +15,7 @@
       </div>
       <div class="mt-2">
         <h2 class="text-4xl font-semibold mt-2 mb-4">Certificados</h2>
-        <div class="flex gap-5">
+        <div class="flex gap-5 mb-1 ml-2">
           <AppCardCertificate
             v-for="card in cardsCertificate"
             :key="card.alt"

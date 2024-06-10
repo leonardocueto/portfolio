@@ -3,7 +3,7 @@
     <img
       :src="src"
       :alt="alt"
-      class="w-60 h-40 min-w-40 min-h-28 object-cover border rounded-2xl filter grayscale hover:grayscale-0 transition duration-300 cursor-pointer"
+      class="w-60 h-40 min-w-40 min-h-28 object-cover border border-gray-700 rounded-2xl filter grayscale hover:grayscale-0 transform transition duration-300 ease-in-out hover:scale-105"
     />
   </a>
 </template>

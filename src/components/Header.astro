@@ -1,0 +1,102 @@
+---
+const navItems = [
+    { title: 'Proyectos', href: '/#proyectos' },
+    { title: 'Experiencia', href: '/#experiencia' },
+    { title: 'Sobre mí', href: '/#sobre-mi' },
+    { title: 'Contacto', href: 'mailto:tucorreo@ejemplo.com' }
+]
+---
+
+<header
+    class='fixed top-0 left-0 z-20 w-full backdrop-blur-md bg-dark-200/30 dark:bg-dark-900/30'
+>
+    <nav
+        class='container mx-auto flex flex-wrap items-center justify-between px-2 py-4 lg:max-w-[1114px]'
+        aria-label='Principal'
+    >
+        <a
+            href='/'
+            class='flex items-center gap-2 text-3xl font-black whitespace-nowrap text-gray-600 dark:text-gray-400'
+            aria-label='Inicio'
+        >
+            <span aria-hidden='true'>Leonardo</span>
+        </a>
+        <button
+            id='menu-toggle'
+            class='inline-flex items-center justify-center p-2 text-gray-600 rounded md:hidden hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
+            aria-label='Abrir menú'
+            aria-expanded='false'
+            aria-controls='mobile-menu'
+        >
+            <svg
+                class='w-6 h-6'
+                fill='none'
+                stroke='currentColor'
+                stroke-width='2'
+                viewBox='0 0 24 24'
+            >
+                <path
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                    d='M4 6h16M4 12h16M4 18h16'
+                ></path>
+            </svg>
+        </button>
+        <div
+            id='mobile-menu'
+            class='max-h-0 overflow-hidden transition-all duration-500 ease-in-out w-full md:flex md:w-auto md:order-1 md:max-h-none md:overflow-visible'
+        >
+            <ul
+                class='mt-4 flex flex-col gap-6 p-4 font-medium md:flex-row md:mt-0 md:p-0'
+                role='list'
+            >
+                {
+                    navItems.map(item => (
+                        <li class='text-center'>
+                            <a
+                                href={item.href}
+                                class='relative z-10 rounded-xl p-2 overflow-hidden text-dark-700 hover:text-dark-900 dark:text-dark-200 dark:hover:text-dark-50
+                before:absolute before:bottom-0 before:left-0 before:z-[-1] before:h-[2px] before:w-0 before:rounded-lg before:bg-gray-300 
+                before:backdrop-blur-lg before:transition-all before:duration-500 hover:before:w-full transition-all duration-300'
+                            >
+                                {item.title}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </nav>
+</header>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.getElementById('menu-toggle')
+        const mobileMenu = document.getElementById('mobile-menu')
+
+        let isOpen = false
+
+        const updateAria = () => {
+            toggleBtn?.setAttribute('aria-expanded', isOpen ? 'true' : 'false')
+        }
+
+        toggleBtn?.addEventListener('click', () => {
+            isOpen = !isOpen
+            updateAria()
+            if (mobileMenu) {
+                mobileMenu.style.maxHeight = isOpen
+                    ? mobileMenu.scrollHeight + 'px'
+                    : '0px'
+            }
+        })
+
+        window.addEventListener('resize', () => {
+            if (mobileMenu) {
+                if (window.innerWidth >= 768) {
+                    mobileMenu.style.maxHeight = ''
+                } else if (!isOpen) {
+                    mobileMenu.style.maxHeight = '0px'
+                }
+            }
+        })
+    })
+</script>

@@ -1,0 +1,44 @@
+---
+const { src = '/avatar.jpg', alt = 'Foto de Leonardo Cueto' } = Astro.props
+---
+
+<div
+    class='relative flex items-center justify-center
+    w-[120px] h-[120px]
+    sm:w-[160px] sm:h-[160px]
+    md:w-[180px] md:h-[180px]'
+>
+    <!-- Anillo animado tipo "aura" -->
+    <div
+        class='absolute inset-0 rounded-full animate-breathing-ring
+    bg-gradient-to-r from-blue-300 to-blue-500 dark:from-cyan-400 dark:to-cyan-600
+    opacity-50 blur-lg z-[-1]'
+    >
+    </div>
+
+    <!-- Imagen -->
+    <img
+        src={src}
+        alt={alt}
+        class='w-full h-full object-cover rounded-full border-8 border-white shadow-md ring-2 ring-blue-300 dark:ring-cyan-600'
+        loading='lazy'
+    />
+</div>
+
+<style>
+    @keyframes breathing-ring {
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 0.4;
+        }
+        50% {
+            transform: scale(1.1);
+            opacity: 0.7;
+        }
+    }
+
+    .animate-breathing-ring {
+        animation: breathing-ring 3s ease-in-out infinite;
+    }
+</style>

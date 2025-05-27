@@ -1,0 +1,119 @@
+---
+import Avatar from './Avatar.astro'
+import Github from './icons/Github.astro'
+import Linkedin from './icons/Linkedin.astro'
+import Gmail from './icons/Gmail.astro'
+import Pill from './Pill.astro'
+---
+
+<div class='relative'>
+    <div class='absolute inset-0 -z-10 bg-white'>
+        <div
+            class='absolute h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]'
+        >
+        </div>
+    </div>
+
+    <section
+        class='relative mx-auto container px-4 pt-36 lg:h-screen lg:pt-0 lg:w-[740px] lg:flex lg:flex-col lg:justify-center'
+    >
+        <div
+            class='flex flex-col-reverse md:flex-row items-start justify-between gap-8'
+        >
+            <div class='flex flex-col gap-4 text-left w-4/5'>
+                <h3 class='text-blue-400 text-sm sm:text-base'>Hola, soy</h3>
+                <h1
+                    class='text-4xl sm:text-5xl md:text-6xl text-gray-800 font-extrabold leading-tight'
+                >
+                    Leonardo Cueto
+                </h1>
+                <h2 class='animacion-banner font-semibold text-lg sm:text-xl'>
+                    Desarrollador Frontend & UI/UX
+                </h2>
+                <p
+                    class='max-w-md text-gray-500 dark:text-gray-300 text-sm sm:text-base'
+                >
+                    2 años de experiencia, especializado en crear interfaces
+                    responsivas y experiencias web excepcionales con especial
+                    atención a la optimización de rendimiento y accesibilidad.
+                </p>
+
+                <section
+                    aria-labelledby='contact-heading'
+                    class='mt-4'
+                >
+                    <h3
+                        id='contact-heading'
+                        class='sr-only'
+                    >
+                        Mis redes
+                    </h3>
+                    <ul class='grid grid-cols-1 sm:grid-cols-2 gap-3'>
+                        <li>
+                            <Pill
+                                url='https://github.com/'
+                                externalUrl={true}
+                            >
+                                <Github />
+                                <span class='sr-only'
+                                    >Ir al perfil de GitHub</span
+                                >
+                                GitHub
+                            </Pill>
+                        </li>
+                        <li>
+                            <Pill
+                                url='https://linkedin.com/in/leonardocueto'
+                                externalUrl={true}
+                            >
+                                <Linkedin />
+                                <span class='sr-only'
+                                    >Ir al perfil de LinkedIn</span
+                                >
+                                LinkedIn
+                            </Pill>
+                        </li>
+                        <li class='sm:col-span-2'>
+                            <Pill
+                                url='mailto:leonardo.cueto.trabajo@gmail.com'
+                                externalUrl={true}
+                            >
+                                <Gmail />
+                                <span class='sr-only'
+                                    >Enviar correo a Leonardo</span
+                                >
+                                leonardo.cueto.trabajo@gmail.com
+                            </Pill>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+            <div class='flex justify-start md:justify-end'>
+                <Avatar
+                    src='perfil.jpeg'
+                    alt='Leonardo Cueto'
+                />
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    .animacion-banner {
+        background: linear-gradient(110deg, #64748b 45%, #0f172a 55%, #64748b);
+        background-size: 250% 100%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: background-shine 4s ease-in-out infinite;
+    }
+
+    @keyframes background-shine {
+        0% {
+            background-position: 200% 0%;
+        }
+        100% {
+            background-position: -200% 0%;
+        }
+    }
+</style>

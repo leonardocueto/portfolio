@@ -1,0 +1,67 @@
+---
+import ProjectCard from '../components/ProjectCard.astro'
+import SectionContainer from './SectionContainer.astro'
+
+const projects = [
+    {
+        title: 'Web Colraices',
+        description:
+            'Colraices es una empresa con más de 17 años en el mercado Colombiano...',
+        urlDemo: '/projects/web-colraices',
+        urlCodigo: 'https://github.com/usuario/web-colraices',
+        image: 'perfil.jpeg',
+        tech: ['NextJS', 'ReactJS', 'SASS', 'JavaScript', 'HTML'],
+        tag: 'Frontend'
+    },
+    {
+        title: 'Sistema Interno',
+        description:
+            'Una aplicación interna para gestión de clientes, métricas y visualización en tiempo real.',
+        urlDemo: '/projects/internal-dashboard',
+        urlCodigo: 'https://github.com/usuario/internal-dashboard',
+        image: 'perfil.jpeg',
+        tech: ['TypeScript', 'React', 'Tailwind', 'Node.js'],
+        tag: 'Fullstack'
+    },
+    {
+        title: 'Portfolio UI',
+        description:
+            'Un rediseño minimalista con enfoque en accesibilidad, performance y dark mode.',
+        urlDemo: '/projects/portfolio-ui',
+        urlCodigo: 'https://github.com/usuario/portfolio-ui',
+        image: 'perfil.jpeg',
+        tech: ['Astro', 'TailwindCSS', 'Accessibility', 'Responsive'],
+        tag: 'Frontend'
+    },
+    {
+        title: 'E-commerce App',
+        description:
+            'Plataforma de ventas online con integración de pagos, login social y panel admin.',
+        urlDemo: '/projects/ecommerce-app',
+        urlCodigo: 'https://github.com/usuario/ecommerce-app',
+        image: 'perfil.jpeg',
+        tech: ['React', 'Next.js', 'Stripe', 'MongoDB'],
+        tag: 'Fullstack'
+    }
+]
+---
+
+<SectionContainer id='proyectos'>
+    <h2
+        id='proyectos-heading'
+        class='text-3xl font-extrabold text-gray-800 dark:text-gray-100 mb-2'
+    >
+        Proyectos
+    </h2>
+    <p class='text-gray-500 dark:text-gray-300 text-base leading-relaxed'>
+        Una selección de proyectos que destacan mis habilidades y experiencia
+        como desarrollador.
+    </p>
+    <div class='w-full flex justify-center mt-10'>
+        <div
+            class='grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full max-w-screen-xl'
+        >
+            {projects.map(project => <ProjectCard {...project} />)}
+        </div>
+    </div>
+</SectionContainer>

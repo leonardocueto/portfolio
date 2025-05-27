@@ -1,0 +1,77 @@
+---
+const {
+    title,
+    description,
+    urlDemo,
+    urlCodigo,
+    image,
+    tech = [],
+    tag = ''
+} = Astro.props
+---
+
+<div
+    class='relative bg-gray-100 shadow dark:shadow-primary-50/10 dark:bg-gray-900 w-full rounded-3xl min-h-[340px] p-1 group overflow-hidden'
+>
+    <figure class='w-full rounded-3xl overflow-hidden'>
+        <img
+            src={image}
+            alt={title}
+            loading='lazy'
+            class='w-full h-48 md:h-56 lg:h-64 object-cover group-hover:scale-105 group-hover:brightness-110 transition-all duration-300'
+        />
+    </figure>
+
+    <div class='p-6'>
+        <h1 class='font-bold text-lg text-primary-700 dark:text-primary-400'>
+            {title}
+        </h1>
+        <p class='line-clamp-3 mt-4 text-gray-700 dark:text-gray-200'>
+            {description}
+        </p>
+
+        <ul class='flex gap-1 flex-wrap text-sm mt-4'>
+            {
+                tech.map(t => (
+                    <li class='rounded-full px-2 border-gray-200 dark:border-gray-800 bg-gray-300/60 dark:bg-primary-900/30 backdrop-blur-sm text-gray-700 dark:text-gray-200'>
+                        {t}
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+
+    {
+        tag && (
+            <span class='absolute top-4 left-4 backdrop-blur-md bg-gray-600/50 py-1 px-2 rounded-full z-10 text-sm font-semibold text-gray-100'>
+                {tag}
+            </span>
+        )
+    }
+    <footer class='flex gap-3 px-6 pb-6 mt-4'>
+        {
+            urlDemo && (
+                <a
+                    href={urlDemo}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    class='flex-1 text-center px-4 py-1.5 rounded-full text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition dark:bg-blue-500 dark:hover:bg-blue-400'
+                >
+                    Demo
+                </a>
+            )
+        }
+        {
+            urlCodigo && (
+                <a
+                    href={urlCodigo}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    class='flex-1 text-center px-4 py-1.5 rounded-full text-sm font-medium bg-gray-200 text-gray-800 hover:bg-gray-300 transition dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700'
+                >
+                    Código
+                </a>
+            )
+        }
+    </footer>
+</div>

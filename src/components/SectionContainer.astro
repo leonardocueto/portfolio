@@ -1,0 +1,11 @@
+---
+const { id = '' } = Astro.props
+---
+
+<section
+    id={id}
+    class='pt-24 container mx-auto px-4 lg:w-[1300px]'
+    aria-labelledby={`${id}-heading`}
+>
+    <slot />
+</section>

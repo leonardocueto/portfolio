@@ -15,8 +15,8 @@ const navItems = [
         aria-label='Principal'
     >
         <a
-            href='/'
-            class='flex items-center gap-2 text-3xl font-black whitespace-nowrap text-gray-600 dark:text-gray-400'
+            href='#inicio'
+            class='flex items-center gap-2 text-3xl font-black whitespace-nowrap text-gray-600 dark:text-gray-400 cursor-pointer'
             aria-label='Inicio'
         >
             <span aria-hidden='true'>Leonardo</span>
@@ -57,7 +57,7 @@ const navItems = [
                                 href={item.href}
                                 class='relative z-10 rounded-xl p-2 overflow-hidden text-dark-700 hover:text-dark-900 dark:text-dark-200 dark:hover:text-dark-50
                 before:absolute before:bottom-0 before:left-0 before:z-[-1] before:h-[2px] before:w-0 before:rounded-lg before:bg-gray-300 
-                before:backdrop-blur-lg before:transition-all before:duration-500 hover:before:w-full transition-all duration-300'
+                before:backdrop-blur-lg before:transition-all before:duration-500 hover:before:w-full transition-all duration-300 cursor-pointer'
                             >
                                 {item.title}
                             </a>
@@ -72,11 +72,20 @@ const navItems = [
     document.addEventListener('DOMContentLoaded', () => {
         const toggleBtn = document.getElementById('menu-toggle')
         const mobileMenu = document.getElementById('mobile-menu')
+        const navLinks = mobileMenu?.querySelectorAll('a')
 
         let isOpen = false
 
         const updateAria = () => {
             toggleBtn?.setAttribute('aria-expanded', isOpen ? 'true' : 'false')
+        }
+
+        const closeMenu = () => {
+            isOpen = false
+            updateAria()
+            if (mobileMenu) {
+                mobileMenu.style.maxHeight = '0px'
+            }
         }
 
         toggleBtn?.addEventListener('click', () => {
@@ -87,6 +96,14 @@ const navItems = [
                     ? mobileMenu.scrollHeight + 'px'
                     : '0px'
             }
+        })
+
+        navLinks?.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    closeMenu()
+                }
+            })
         })
 
         window.addEventListener('resize', () => {

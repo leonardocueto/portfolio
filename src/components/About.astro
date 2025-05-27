@@ -1,4 +1,5 @@
 ---
+import Clipboard from './Clipboard.astro'
 import SectionContainer from './SectionContainer.astro'
 ---
 
@@ -41,16 +42,17 @@ import SectionContainer from './SectionContainer.astro'
 
             <div class='mt-6 flex justify-center sm:justify-start'>
                 <a
-                    href='/cv.pdf'
+                    href='https://drive.google.com/file/d/1Zxk0BhUFoUBxdqdjSKGkg49WhQwl54h4/view?usp=sharing'
                     target='_blank'
                     rel='noopener noreferrer'
-                    class="flex items-center gap-2 px-6 py-2 font-bold relative z-10 overflow-hidden
+                    class="flex items-center px-6 py-2 font-bold relative z-10 overflow-hidden
                  before:content-[''] before:absolute before:top-0 before:left-0 before:h-full before:w-0
                  before:rounded-full before:bg-blue-400 before:-z-10 before:transition-all before:duration-300
                  hover:before:w-full text-gray-100 bg-gray-800 rounded-full hover:bg-gray-600
-                 hover:shadow-md hover:shadow-blue-500/50 ease duration-500 cursor-pointer"
+                 hover:shadow-md hover:shadow-blue-500/50 ease duration-500 cursor-pointer gap-4"
                 >
                     Curriculum
+                    <Clipboard />
                 </a>
             </div>
         </div>

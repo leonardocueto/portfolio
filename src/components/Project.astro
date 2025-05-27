@@ -4,44 +4,54 @@ import SectionContainer from './SectionContainer.astro'
 
 const projects = [
     {
-        title: 'Web Colraices',
+        title: 'Numari App',
         description:
-            'Colraices es una empresa con más de 17 años en el mercado Colombiano...',
-        urlDemo: '/projects/web-colraices',
-        urlCodigo: 'https://github.com/usuario/web-colraices',
-        image: 'perfil.jpeg',
-        tech: ['NextJS', 'ReactJS', 'SASS', 'JavaScript', 'HTML'],
+            'Plataforma web para nutricionistas que permite gestionar pacientes, planes alimenticios y métricas de progreso de forma intuitiva. Desarrollo frontend con React y TypeScript, desplegada en Vercel.',
+        urlDemo: 'https://nutritionapp-xi.vercel.app/login',
+        urlCodigo: 'https://github.com/leonardocueto/nutritionapp',
+        image: 'numari-app.png',
+        tech: ['React.JS', 'TailwindCSS', 'TypeScript', 'Vercel'],
         tag: 'Frontend'
     },
     {
-        title: 'Sistema Interno',
+        title: 'Numari Landing',
         description:
-            'Una aplicación interna para gestión de clientes, métricas y visualización en tiempo real.',
-        urlDemo: '/projects/internal-dashboard',
-        urlCodigo: 'https://github.com/usuario/internal-dashboard',
-        image: 'perfil.jpeg',
-        tech: ['TypeScript', 'React', 'Tailwind', 'Node.js'],
-        tag: 'Fullstack'
-    },
-    {
-        title: 'Portfolio UI',
-        description:
-            'Un rediseño minimalista con enfoque en accesibilidad, performance y dark mode.',
-        urlDemo: '/projects/portfolio-ui',
-        urlCodigo: 'https://github.com/usuario/portfolio-ui',
-        image: 'perfil.jpeg',
-        tech: ['Astro', 'TailwindCSS', 'Accessibility', 'Responsive'],
+            'Landing page informativa y responsiva para Numari, enfocada en destacar características del producto y capturar leads. Construida con Astro y TailwindCSS, optimizada para rendimiento y SEO.',
+        urlDemo: 'https://www.numari.app/',
+        urlCodigo: 'https://github.com/leonardocueto/numari-landing',
+        image: 'numari-landing.png',
+        tech: ['Astro', 'Javascript', 'TailwindCSS', 'Clouflare'],
         tag: 'Frontend'
     },
     {
-        title: 'E-commerce App',
+        title: 'Pokedex',
         description:
-            'Plataforma de ventas online con integración de pagos, login social y panel admin.',
-        urlDemo: '/projects/ecommerce-app',
-        urlCodigo: 'https://github.com/usuario/ecommerce-app',
-        image: 'perfil.jpeg',
-        tech: ['React', 'Next.js', 'Stripe', 'MongoDB'],
-        tag: 'Fullstack'
+            'Aplicación de Pokédex construida con React y TypeScript, sin librerías externas. Implementa scroll infinito y consumo de la PokéAPI para mostrar información detallada de cada Pokémon.',
+        urlDemo: 'https://poke-react-tau.vercel.app/',
+        urlCodigo: 'https://github.com/leonardocueto/PokeReact',
+        image: 'pokemon.png',
+        tech: ['React', 'TypeScript', 'CSS'],
+        tag: 'Frontend'
+    },
+    {
+        title: 'Finder Rick & Morty',
+        description:
+            'Buscador de personajes, ubicaciones y episodios de la serie Rick & Morty usando su API oficial. Incluye scroll infinito y una UI responsiva desarrollada con Vue y TailwindCSS.',
+        urlDemo: 'https://rymfinder-vue.netlify.app/',
+        urlCodigo: 'https://github.com/leonardocueto/RyMFinder-vue',
+        image: 'rick&morty.png',
+        tech: ['Vue', 'TailwindCSS', 'TypeScript', 'Axios'],
+        tag: 'Frontend'
+    },
+    {
+        title: 'Cripto',
+        description:
+            'Cotizador en tiempo real de criptomonedas, con conversión a diferentes monedas fiat. Utiliza una API externa para datos en vivo y está desarrollada con React y JavaScript puro.',
+        urlDemo: 'https://cripto-react30123.netlify.app/',
+        urlCodigo: 'https://github.com/leonardocueto/criptos-react',
+        image: 'cripto.png',
+        tech: ['React', 'JavaScript', 'CSS', 'Axios'],
+        tag: 'Frontend'
     }
 ]
 ---
@@ -49,7 +59,7 @@ const projects = [
 <SectionContainer id='proyectos'>
     <h2
         id='proyectos-heading'
-        class='text-3xl font-extrabold text-gray-800 dark:text-gray-100 mb-2'
+        class='text-3xl font-extrabold text-gray-800 dark:text-gray-100 md:pt-6 mb-2'
     >
         Proyectos
     </h2>
@@ -59,7 +69,7 @@ const projects = [
     </p>
     <div class='w-full flex justify-center mt-10'>
         <div
-            class='grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full max-w-screen-xl'
+            class='grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-screen-xl'
         >
             {projects.map(project => <ProjectCard {...project} />)}
         </div>

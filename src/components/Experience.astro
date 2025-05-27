@@ -1,0 +1,76 @@
+---
+import SectionContainer from './SectionContainer.astro'
+
+const experienceInfo = [
+    {
+        role: 'Frontend Developer',
+        company: 'Agencia Creativa XYZ',
+        date: 'Mar 2022 - Actualidad',
+        description:
+            'Desarrollé interfaces modernas en React y Tailwind para clientes del rubro e-commerce, optimizando tiempos de carga y accesibilidad.'
+    },
+    {
+        role: 'Desarrollador Web',
+        company: 'StartUp FintechFlow',
+        date: 'Ene 2021 - Feb 2022',
+        description:
+            'Implementé dashboards interactivos con datos en tiempo real usando Next.js y Chart.js. Participé en la integración con pasarelas de pago.'
+    },
+    {
+        role: 'Diseñador UI / Maquetador',
+        company: 'Estudio VisualBox',
+        date: 'Ago 2019 - Dic 2020',
+        description:
+            'Diseñé y maqueté sitios responsivos con Figma, HTML, SCSS y animaciones CSS para clientes del sector educativo y cultural.'
+    }
+]
+---
+
+<SectionContainer id='experiencia'>
+    <article class='container md:px-20 mt-10'>
+        <h2 class='text-3xl font-bold text-gray-700 dark:text-blue-50 py-8'>
+            Experiencia
+        </h2>
+        <ul class='relative border-l border-gray-400 dark:border-gray-700'>
+            {
+                experienceInfo.map(experience => (
+                    <li class='mb-8 md:mb-6 ml-6'>
+                        <span class='absolute flex items-center justify-center w-6 h-6 bg-gray-600 rounded-full -left-3 ring-8 ring-gray-50 dark:ring-gray-950 dark:bg-gray-600'>
+                            <svg
+                                aria-hidden='true'
+                                class='w-4 h-4 text-blue-100 dark:text-blue-100'
+                                fill='currentColor'
+                                viewBox='0 0 20 20'
+                                xmlns='http://www.w3.org/2000/svg'
+                            >
+                                <path
+                                    fill-rule='evenodd'
+                                    clip-rule='evenodd'
+                                    d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z'
+                                />
+                            </svg>
+                        </span>
+
+                        <h3 class='flex items-center gap-2 mb-1 text-lg font-semibold text-blue-700 dark:text-blue-400'>
+                            {experience.role}
+                            <span class='dark:text-white text-gray-700 font-normal'>
+                                –
+                            </span>
+                            <span class='text-sm text-sky-800 dark:text-sky-300/90'>
+                                {experience.company}
+                            </span>
+                        </h3>
+
+                        <time class='block mb-2 text-sm font-normal leading-none text-blue-950/80 dark:text-blue-200/90'>
+                            {experience.date}
+                        </time>
+
+                        <p class='mb-4 font-normal text-gray-700 dark:text-gray-200 text-base'>
+                            {experience.description}
+                        </p>
+                    </li>
+                ))
+            }
+        </ul>
+    </article>
+</SectionContainer>

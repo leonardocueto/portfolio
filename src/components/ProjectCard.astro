@@ -18,7 +18,7 @@ const {
             src={image}
             alt={title}
             loading='lazy'
-            class='w-full h-48 md:h-56 lg:h-64 object-cover group-hover:scale-105 group-hover:brightness-110 transition-all duration-300'
+            class='w-full h-48 md:h-56 lg:h-64 object-cover group-hover:scale-105 group-hover:brightness-105 transition-all duration-300'
         />
     </figure>
 
@@ -32,7 +32,7 @@ const {
 
         <ul class='flex gap-1 flex-wrap text-sm mt-4'>
             {
-                tech.map(t => (
+                tech.map((t: string) => (
                     <li class='rounded-full px-2 border-gray-200 dark:border-gray-800 bg-gray-300/60 dark:bg-primary-900/30 backdrop-blur-sm text-gray-700 dark:text-gray-200'>
                         {t}
                     </li>

@@ -1,6 +1,7 @@
 ---
 import Github from './icons/Github.astro'
 import Preview from './icons/Preview.astro'
+import Tech from './Tech.astro'
 
 const {
     title,
@@ -36,8 +37,8 @@ const {
         <ul class='flex gap-1 flex-wrap text-sm mt-4'>
             {
                 tech.map((t: string) => (
-                    <li class='rounded-full px-2 py-0.5 border-gray-200 dark:border-gray-800 bg-gray-300/60 dark:bg-primary-900/30 backdrop-blur-sm text-gray-700 dark:text-gray-200'>
-                        {t}
+                    <li>
+                        <Tech label={t} />
                     </li>
                 ))
             }

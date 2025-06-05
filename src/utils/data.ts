@@ -6,7 +6,7 @@ export const projects = [
         urlDemo: 'https://nutritionapp-xi.vercel.app/login',
         urlCodigo: 'https://github.com/leonardocueto/nutritionapp',
         image: 'numari-app.webp',
-        tech: ['ReactJS', 'TailwindCSS', 'TypeScript', 'Vercel'],
+        tech: ['ReactJS', 'TailwindCSS', 'TypeScript'],
         tag: 'Frontend'
     },
     {

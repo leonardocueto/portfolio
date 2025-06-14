@@ -1,0 +1,31 @@
+---
+const lang = Astro.cookies.get("lang")?.value || "es";
+---
+
+<li class="flex items-center justify-center">
+  <button
+    id="lang-toggle"
+    class="w-[40px] text-center text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50 transition-opacity duration-300"
+    aria-label="Cambiar idioma"
+  >
+    <span id="flag">{lang === "en" ? "EN" : "ES"}</span>
+  </button>
+</li>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const flag = document.getElementById("flag");
+    const toggle = document.getElementById("lang-toggle");
+
+    if (!flag || !toggle) return;
+
+    let lang = localStorage.getItem("lang") || "es";
+    flag.textContent = lang === "en" ? "EN" : "ES";
+
+    toggle.addEventListener("click", () => {
+      lang = lang === "en" ? "es" : "en";
+      localStorage.setItem("lang", lang);
+      flag.textContent = lang === "en" ? "EN" : "ES";
+    });
+  });
+</script>

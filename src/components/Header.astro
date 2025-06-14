@@ -1,4 +1,8 @@
 ---
+import Dark from "@/components/icons/Dark.astro";
+import Light from "@/components/icons/Light.astro";
+import LanguageSwitcher from "@/components/LanguageSwitcher.astro";
+
 const navItems = [
   { title: "Proyectos", href: "/#proyectos" },
   { title: "Experiencia", href: "/#experiencia" },
@@ -21,6 +25,7 @@ const navItems = [
     >
       <span aria-hidden="true">Leonardo</span>
     </a>
+
     <button
       id="menu-toggle"
       class="inline-flex items-center justify-center p-2 text-gray-600 rounded md:hidden hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
@@ -41,12 +46,13 @@ const navItems = [
           d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button>
+
     <div
       id="mobile-menu"
       class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out w-full md:flex md:w-auto md:order-1 md:max-h-none md:overflow-visible"
     >
       <ul
-        class="mt-4 flex flex-col gap-6 p-4 font-medium md:flex-row md:mt-0 md:p-0"
+        class="mt-4 flex flex-col gap-6 p-4 font-medium md:flex-row md:mt-0 md:p-0 items-center"
         role="list"
       >
         {
@@ -54,7 +60,7 @@ const navItems = [
             <li class="text-center">
               <a
                 href={item.href}
-                class="relative z-10 rounded-xl p-2 overflow-hidden text-dark-700 hover:text-dark-900 dark:text-dark-200 dark:hover:text-dark-50
+                class="relative z-10 rounded-xl p-2 overflow-hidden text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50
                 before:absolute before:bottom-0 before:left-0 before:z-[-1] before:h-[2px] before:w-0 before:rounded-lg before:bg-gray-300 
                 before:backdrop-blur-lg before:transition-all before:duration-500 hover:before:w-full transition-all duration-300 cursor-pointer"
               >
@@ -63,16 +69,30 @@ const navItems = [
             </li>
           ))
         }
+
+        <LanguageSwitcher />
+
+        <li class="text-center">
+          <button
+            id="theme-toggle"
+            class="flex items-center justify-center gap-2 text-gray-600 dark:text-gray-300 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-300 hover:cursor-pointer"
+            aria-label="Cambiar tema"
+          >
+            <span id="icon-dark" class="inline dark:hidden"><Dark /></span>
+            <span id="icon-light" class="hidden"><Light /></span>
+          </button>
+        </li>
       </ul>
     </div>
   </nav>
 </header>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    // Menú mobile
     const toggleBtn = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
     const navLinks = mobileMenu?.querySelectorAll("a");
-
     let isOpen = false;
 
     const updateAria = () => {
@@ -99,19 +119,52 @@ const navItems = [
 
     navLinks?.forEach((link) => {
       link.addEventListener("click", () => {
-        if (window.innerWidth < 768) {
-          closeMenu();
-        }
+        if (window.innerWidth < 768) closeMenu();
       });
     });
 
     window.addEventListener("resize", () => {
-      if (mobileMenu) {
-        if (window.innerWidth >= 768) {
-          mobileMenu.style.maxHeight = "";
-        } else if (!isOpen) {
-          mobileMenu.style.maxHeight = "0px";
-        }
+      if (!mobileMenu) return;
+      if (window.innerWidth >= 768) {
+        mobileMenu.style.maxHeight = "";
+      } else if (!isOpen) {
+        mobileMenu.style.maxHeight = "0px";
+      }
+    });
+
+    // Tema
+    const theme = localStorage.getItem("theme-color-page");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    const isDark = theme === "dark" || (!theme && prefersDark);
+
+    document.documentElement.classList.toggle("dark", isDark);
+
+    window.requestAnimationFrame(() => {
+      const iconDark = document.getElementById("icon-dark");
+      const iconLight = document.getElementById("icon-light");
+
+      const updateIcons = (isDark: boolean) => {
+        if (!iconDark || !iconLight) return;
+        iconDark.classList.toggle("hidden", isDark);
+        iconLight.classList.toggle("hidden", !isDark);
+      };
+
+      updateIcons(isDark);
+
+      const toggleTheme = () => {
+        const isCurrentlyDark =
+          document.documentElement.classList.contains("dark");
+        const newIsDark = !isCurrentlyDark;
+        document.documentElement.classList.toggle("dark", newIsDark);
+        localStorage.setItem("theme-color-page", newIsDark ? "dark" : "light");
+        updateIcons(newIsDark);
+      };
+
+      const themeToggleButton = document.getElementById("theme-toggle");
+      if (themeToggleButton) {
+        themeToggleButton.addEventListener("click", toggleTheme);
       }
     });
   });

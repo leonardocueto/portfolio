@@ -1,4 +1,5 @@
-export const projects = [
+import type { Experience, Projects } from '@/types'
+export const projects: Projects[] = [
     {
         title: 'Numari App',
         description:
@@ -51,13 +52,20 @@ export const projects = [
     }
 ]
 
-export const experienceInfo = [
+export const experienceInfo: Experience[] = [
+    {
+        role: 'Front-end Developer',
+        company: 'Numari',
+        date: 'Mar 2025 - Presente',
+        description:
+            'Desarrollé el frontend de una plataforma para nutricionistas con una interfaz intuitiva y responsiva que automatiza la gestión de pacientes, planes y turnos, mejorando la eficiencia clínica y el seguimiento personalizado. Utilice React, Zustand para el estado global, React Hook Form y Zod para la validación de formularios y Tailwind Css para el diseño UI.'
+    },
     {
         role: 'Front-end & Applications Developer',
         company: 'Freelance',
-        date: 'Junio 2023 - Actualidad',
-        description:
-            'Desarrollé una aplicación para nutricionistas para automatizar la gestión de pacientes y datos, con una interfaz intuitiva y responsiva que garantiza una navegación fluida en cualquier dispositivo. Optimizando la coordinación entre nutricionistas y pacientes, facilitando el seguimiento y reduciendo el tiempo dedicado a tareas administrativas, utilicé React para la interfaz, Zustand para la gestión de estado, React Hook Form y Zod para validación, justo con tailwind y flowbite para el diseño responsivo.'
+        date: 'Jun 2024 - Presente',
+        description: 'Desarrolle un sitio web par ael diario japones Alternativa Nikkei, con funcionalidades para la publicación de artículos, venta de libros y contenido editoriales.'
+        
     },
     {
         role: 'Infrastructure Expert',

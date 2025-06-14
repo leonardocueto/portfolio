@@ -10,7 +10,7 @@ const currentLang = Astro.currentLocale || "es";
 const t = useTranslations(currentLang as keyof typeof languageList);
 ---
 
-<SectionContainer id="experiencia">
+<SectionContainer id="experience">
   <article class="container md:px-20 mt-10">
     <h2 class="text-3xl font-bold text-gray-700 dark:text-blue-50 py-8">
       {t("experience.title")}

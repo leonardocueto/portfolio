@@ -2,18 +2,34 @@
 const currentPath = Astro.url.pathname;
 const currentLang = currentPath.startsWith("/en") ? "en" : "es";
 const nextLang = currentLang === "en" ? "es" : "en";
-const newPath = currentPath.replace(/^\/(en|es)/, `/${nextLang}`);
-const redirectTo =
-  newPath === currentPath ? `/${nextLang}${currentPath}` : newPath;
 ---
 
 <li class="flex items-center justify-center">
-  <a
-    href={redirectTo}
-    onclick={`localStorage.setItem('lang', '${nextLang}')`}
+  <button
+    id="lang-toggle"
     class="w-[40px] text-center text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50 transition-opacity duration-300 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800"
     aria-label="Cambiar idioma"
+    data-next-lang={nextLang}
   >
     {currentLang.toUpperCase()}
-  </a>
+  </button>
 </li>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("lang-toggle");
+    if (!toggle) return;
+
+    toggle.addEventListener("click", () => {
+      const nextLang = toggle.dataset.nextLang;
+      const { pathname, hash } = window.location;
+
+      // Reemplaza el idioma actual en el pathname por el nuevo
+      const newPath = pathname.replace(/^\/(en|es)/, `/${nextLang}`);
+
+      // Redirige manteniendo el hash (si existe)
+      window.localStorage.setItem("lang", nextLang || "es");
+      window.location.href = `${newPath}${hash}`;
+    });
+  });
+</script>

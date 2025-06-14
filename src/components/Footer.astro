@@ -1,61 +1,67 @@
-<footer class='border-t border-gray-300 dark:border-gray-700 py-8 px-4 mt-20'>
-    <div
-        class='container mx-auto max-w-screen-xl flex flex-col sm:flex-row justify-between items-center gap-6'
-    >
-        <!-- Información de marca -->
-        <div class='text-center sm:text-left'>
-            <h2 class='text-xl font-bold text-gray-800 dark:text-gray-100'>
-                Leonardo.
-            </h2>
-            <p class='text-sm text-gray-600 dark:text-gray-400'>
-                Desarrollador Frontend & UI/UX
-            </p>
-        </div>
+---
+import { languageList } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
 
-        <!-- Derechos -->
-        <div class='text-sm text-gray-500 dark:text-gray-400 text-center'>
-            © 2025 Leonardo Cueto. Todos los derechos reservados.
-        </div>
+const currentLang = Astro.currentLocale || "es";
 
-        <!-- Botón subir con animación -->
-        <div>
-            <a
-                href='#inicio'
-                class='flex items-center justify-center w-10 h-10 rounded-full bg-blue-300 hover:bg-blue-400 text-white transition-all duration-300 animate-bounce-custom cursor-pointer'
-                aria-label='Volver arriba'
-            >
-                <svg
-                    class='w-5 h-5'
-                    fill='none'
-                    stroke='black'
-                    stroke-width='2'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                >
-                    <path
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                        d='M5 15l7-7 7 7'
-                    ></path>
-                </svg>
-            </a>
-        </div>
+const t = useTranslations(currentLang as keyof typeof languageList);
+---
+
+<footer class="border-t border-gray-300 dark:border-gray-700 py-8 px-4 mt-20">
+  <div
+    class="container mx-auto max-w-screen-xl flex flex-col sm:flex-row justify-between items-center gap-6"
+  >
+    <!-- Información de marca -->
+    <div class="text-center sm:text-left">
+      <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">
+        Leonardo.
+      </h2>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        {t("banner.work")}
+      </p>
     </div>
 
-    <!-- Animación personalizada -->
-    <style>
-        @keyframes bounce-custom {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            30% {
-                transform: translateY(-10px);
-            }
-        }
+    <!-- Derechos -->
+    <div class="text-sm text-gray-500 dark:text-gray-400 text-center">
+      © 2025 Leonardo Cueto. {t("footer.rights")}
+    </div>
 
-        .animate-bounce-custom {
-            animation: bounce-custom 1.75s ease-in-out infinite;
-        }
-    </style>
+    <!-- Botón subir con animación -->
+    <div>
+      <a
+        href="#inicio"
+        class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-300 hover:bg-blue-400 text-white transition-all duration-300 animate-bounce-custom cursor-pointer"
+        aria-label="Volver arriba"
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="black"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"
+          ></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Animación personalizada -->
+  <style>
+    @keyframes bounce-custom {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      30% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .animate-bounce-custom {
+      animation: bounce-custom 1.75s ease-in-out infinite;
+    }
+  </style>
 </footer>

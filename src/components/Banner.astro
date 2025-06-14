@@ -4,6 +4,13 @@ import Github from "./icons/Github.astro";
 import Gmail from "./icons/Gmail.astro";
 import Linkedin from "./icons/Linkedin.astro";
 import Pill from "./Pill.astro";
+
+import { languageList } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+const currentLang = Astro.currentLocale || "es";
+
+const t = useTranslations(currentLang as keyof typeof languageList);
 ---
 
 <div class="relative">
@@ -25,21 +32,19 @@ import Pill from "./Pill.astro";
       class="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-8"
     >
       <div class="flex flex-col gap-4 text-left w-4/5">
-        <h3 class="text-blue-400 text-sm sm:text-base">Hola, soy</h3>
+        <h3 class="text-blue-400 text-sm sm:text-base">{t("banner.im")}</h3>
         <h1
           class="text-4xl sm:text-5xl md:text-6xl text-gray-800 font-extrabold leading-tight"
         >
           Leonardo Cueto
         </h1>
         <h2 class="animacion-banner font-semibold text-lg sm:text-xl">
-          Desarrollador Frontend & UI/UX
+          {t("banner.work")}
         </h2>
         <p
           class="max-w-md text-gray-500 dark:text-gray-300 text-sm sm:text-base"
         >
-          2 años de experiencia, especializado en crear interfaces responsivas y
-          experiencias web excepcionales con especial atención a la optimización
-          de rendimiento y accesibilidad.
+          {t("banner.description")}
         </p>
 
         <section aria-labelledby="contact-heading" class="mt-4">
@@ -53,10 +58,7 @@ import Pill from "./Pill.astro";
               </Pill>
             </li>
             <li>
-              <Pill
-                url="https://www.linkedin.com/in/leonardo-cueto/"
-                externalUrl={true}
-              >
+              <Pill url={t("banner.linkedin")} externalUrl={true}>
                 <Linkedin />
                 <span class="sr-only">Ir al perfil de LinkedIn</span>
                 LinkedIn
@@ -76,7 +78,7 @@ import Pill from "./Pill.astro";
         </section>
       </div>
       <div class="flex justify-start md:justify-end">
-        <Avatar src="perfil.webp" alt="Leonardo Cueto" />
+        <Avatar src="/perfil.webp" alt="Leonardo Cueto" />
       </div>
     </div>
   </section>

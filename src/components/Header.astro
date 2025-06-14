@@ -3,11 +3,20 @@ import Dark from "@/components/icons/Dark.astro";
 import Light from "@/components/icons/Light.astro";
 import LanguageSwitcher from "@/components/LanguageSwitcher.astro";
 
-const navItems = [
-  { title: "Proyectos", href: "/#proyectos" },
-  { title: "Experiencia", href: "/#experiencia" },
-  { title: "Sobre mí", href: "/#sobre-mi" },
-  { title: "Contacto", href: "mailto:tucorreo@ejemplo.com" },
+import { useTranslations } from "@/i18n/utils";
+import { languageList } from "@/i18n/ui";
+
+const currentLang = Astro.currentLocale || "es";
+
+const t = useTranslations(currentLang as keyof typeof languageList);
+
+const navItems: {
+  title: "nav.projects" | "nav.experience" | "nav.about";
+  href: string;
+}[] = [
+  { title: "nav.projects", href: "#proyectos" },
+  { title: "nav.experience", href: "#experiencia" },
+  { title: "nav.about", href: "#sobre-mi" },
 ];
 ---
 
@@ -64,12 +73,21 @@ const navItems = [
                 before:absolute before:bottom-0 before:left-0 before:z-[-1] before:h-[2px] before:w-0 before:rounded-lg before:bg-gray-300 
                 before:backdrop-blur-lg before:transition-all before:duration-500 hover:before:w-full transition-all duration-300 cursor-pointer"
               >
-                {item.title}
+                {t(item.title)}
               </a>
             </li>
           ))
         }
-
+        <li class="text-center">
+          <a
+            href="mailto:leonardo.cueto.trabajo@gmail.com"
+            class="relative z-10 rounded-xl p-2 overflow-hidden text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50
+                before:absolute before:bottom-0 before:left-0 before:z-[-1] before:h-[2px] before:w-0 before:rounded-lg before:bg-gray-300
+                before:backdrop-blur-lg before:transition-all before:duration-500 hover:before:w-full transition-all duration-300 cursor-pointer"
+          >
+            {t("nav.contact")}
+          </a>
+        </li>
         <LanguageSwitcher />
 
         <li class="text-center">

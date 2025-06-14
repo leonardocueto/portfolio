@@ -2,6 +2,13 @@
 import ProjectCard from "../components/ProjectCard.astro";
 import { projects } from "../utils/data";
 import SectionContainer from "./SectionContainer.astro";
+
+import { languageList } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+const currentLang = Astro.currentLocale || "es";
+
+const t = useTranslations(currentLang as keyof typeof languageList);
 ---
 
 <SectionContainer id="proyectos">
@@ -9,11 +16,10 @@ import SectionContainer from "./SectionContainer.astro";
     id="proyectos-heading"
     class="text-3xl font-extrabold text-gray-800 dark:text-gray-100 md:pt-6 mb-2"
   >
-    Proyectos
+    {t("project.title")}
   </h2>
   <p class="text-gray-500 dark:text-gray-300 text-base leading-relaxed">
-    Una selección de proyectos que destacan mis habilidades y experiencia como
-    desarrollador.
+    {t("project.description")}
   </p>
   <div class="w-full flex justify-center mt-10">
     <div

@@ -68,7 +68,7 @@ export const experienceInfo: Experience[] = [
         description: 'experience.freelance.description' 
     },
     {
-        role: 'Infrastructure Expert',
+        role: 'experience.role.kn',
         company: 'Kuehne + Nagel',
         date: 'experience.kn.date',
         description: 'experience.kn.description'

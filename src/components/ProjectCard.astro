@@ -7,7 +7,6 @@ import { languageList } from "@/i18n/ui";
 import { useTranslations } from "@/i18n/utils";
 
 const currentLang = Astro.currentLocale || "es";
-
 const t = useTranslations(currentLang as keyof typeof languageList);
 
 const {
@@ -22,21 +21,22 @@ const {
 ---
 
 <div
-  class="relative bg-gray-100 shadow dark:shadow-primary-50/10 dark:bg-gray-900 w-full rounded-3xl min-h-[340px] p-1 group overflow-hidden"
+  class="relative flex flex-col bg-gray-100 shadow dark:shadow-primary-50/10 dark:bg-gray-900 w-full rounded-3xl p-1 group overflow-hidden"
 >
-  <figure class="w-full rounded-3xl overflow-hidden">
+  <figure class="aspect-video w-full rounded-3xl overflow-hidden">
     <img
       src={image}
       alt={title}
       loading="lazy"
-      class="w-full h-48 md:h-56 lg:h-64 object-cover group-hover:scale-105 group-hover:brightness-105 transition-all duration-300"
+      class="w-full h-full object-cover group-hover:scale-105 group-hover:brightness-105 transition-all duration-300"
     />
   </figure>
 
-  <div class="p-6">
+  <div class="p-6 flex flex-col flex-1">
     <h1 class="font-bold text-lg text-primary-700 dark:text-primary-400">
       {title}
     </h1>
+
     <p class="line-clamp-3 mt-4 text-gray-700 dark:text-gray-200">
       {t(description)}
     </p>
@@ -50,6 +50,35 @@ const {
         ))
       }
     </ul>
+
+    <footer class="flex gap-3 mt-auto pt-6">
+      {
+        urlDemo && (
+          <a
+            href={urlDemo}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center gap-2 flex-1 px-4 py-2 text-sm font-medium rounded-full bg-blue-600 text-white hover:bg-blue-700 transition dark:bg-blue-500 dark:hover:bg-blue-400"
+          >
+            <Preview class="w-4 h-4" />
+            {t("project.preview")}
+          </a>
+        )
+      }
+      {
+        urlCodigo && (
+          <a
+            href={urlCodigo}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center gap-2 flex-1 px-4 py-2 text-sm font-medium rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 transition dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+          >
+            <Github class="w-4 h-4" />
+            {t("project.code")}
+          </a>
+        )
+      }
+    </footer>
   </div>
 
   {
@@ -59,33 +88,4 @@ const {
       </span>
     )
   }
-
-  <footer class="flex gap-3 px-6 pb-6 mt-auto">
-    {
-      urlDemo && (
-        <a
-          href={urlDemo}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center justify-center gap-2 flex-1 px-4 py-2 text-sm font-medium rounded-full bg-blue-600 text-white hover:bg-blue-700 transition dark:bg-blue-500 dark:hover:bg-blue-400"
-        >
-          <Preview class="w-4 h-4" />
-          {t("project.preview")}
-        </a>
-      )
-    }
-    {
-      urlCodigo && (
-        <a
-          href={urlCodigo}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center justify-center gap-2 flex-1 px-4 py-2 text-sm font-medium rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 transition dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
-        >
-          <Github class="w-4 h-4" />
-          {t("project.code")}
-        </a>
-      )
-    }
-  </footer>
 </div>

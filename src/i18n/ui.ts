@@ -29,6 +29,7 @@ export const labels = {
         'experience.role.frontend.application': 'Desarrollador de aplicaciones y Front-end',
         'experience.freelance.date': 'Jun 2024 - Presente',
         'experience.freelance.description': 'Desarrolle un sitio web par ael diario japones Alternativa Nikkei, con funcionalidades para la publicación de artículos, venta de libros y contenido editoriales.',
+        'experience.role.kn': 'Experto en infraestructura IT',
         'experience.kn.description':  'Desarrollé aplicaciones y el sitio web interno de RRHH, coordinando al equipo de IT e implementando Scrum para mejorar la productividad. Administré servidores CentOS/RedHat 7 y soluciones de software clave para satisfacer las necesidades del negocio.Líder técnico de las oficinas de Argentina y Uruguay, coordinando el equipo de IT, gestionando distintos proyectos de la empresa para optimizar el funcionamiento de la infraestructura.',
         'experience.kn.date': 'Nov 2019 - Ene 2025',
         'experience.role.support': 'Soporte técnico IT',
@@ -41,7 +42,7 @@ export const labels = {
         'about.description2': 'usando tecnologías como',
         'about.and': 'y',
         'about.others': 'entre otros.',
-        'about.cv': 'https://drive.google.com/file/d/1Zxk0BhUFoUBxdqdjSKGkg49WhQwl54h4/view?usp=sharing',
+        'about.cv': 'https://drive.google.com/file/d/1QWisQR105V1uYOsAh4PFyX822erXUuTd/view?usp=drive_link',
         'footer.rights': 'Todos los derechos reservados.'
 
 
@@ -71,6 +72,7 @@ export const labels = {
     'experience.role.frontend.application': 'Applications and Frontend Developer',
     'experience.freelance.date': 'Jun 2024 - Present',
     'experience.freelance.description': 'Developed a website for the Japanese newspaper Alternativa Nikkei with features for article publishing, book sales, and editorial content.',
+    'experience.role.kn': 'Infrastructure expert',
     'experience.kn.description': 'Developed applications and the internal HR website, coordinated the IT team, and implemented Scrum to improve productivity. Managed CentOS/RedHat 7 servers and key software solutions to meet business needs. Technical lead for the Argentina and Uruguay offices, coordinating the IT team and managing various infrastructure optimization projects.',
     'experience.kn.date': 'Nov 2019 - Jan 2025',
     'experience.role.support': 'IT Support Technician',
@@ -83,7 +85,7 @@ export const labels = {
     'about.description2': 'using technologies like',
     'about.and': 'and',
     'about.others': 'among others.',
-    'about.cv': 'https://drive.google.com/file/d/1Zxk0BhUFoUBxdqdjSKGkg49WhQwl54h4/view?usp=sharing',
+    'about.cv': 'https://drive.google.com/file/d/17tAOhqhma6n6VOToixdvA7hw7TyehPaG/view?usp=drive_link',
     'footer.rights': 'All rights reserved.',
   }
 }
